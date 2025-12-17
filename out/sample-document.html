@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>sample-document</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style>
+  /**
+   *  Ravel v0.4
+   *  Check for Updates: https://github.com/isunjn/ravel/releases
+   */
+
+   :root {
+    --ravel-bg-color: #ffffff;
+    --ravel-text-color: #424149;
+    --ravel-text-pale-color: #8e8d91;
+    --ravel-accent-color: #33529d;
+    --ravel-accent-pale-color: #d1d6e5;
+    --ravel-scrollbar-thumb-color: #bbbbbb;
+    --ravel-scrollbar-thumb-hover-color: #aaaaaa;
+    --ravel-hover-bg-color: #f5f5f5;
+    --ravel-input-border-color: #42414920;
+    --ravel-input-border-focus-color: #42414940;
+    --ravel-blockquote-border-color: #8e8d9170;
+    --ravel-hr-color: #eeeeee;
+    --ravel-gutter-border-color: #bababa50;
+    --ravel-hover-accent-color: #bababa;
+    --ravel-table-border-color: #dbdbdb;
+    --ravel-table-btn-color: #8e8d9190;
+    --ravel-table-btn-hover-color: #000;
+    --ravel-highlight-color: #33529d70;
+    --ravel-code-tooltip-border-color: #f3f3f3;
+    --ravel-img-meta-color: #5b469b;
+    --ravel-blur-text-color: #dddddd;
+    --ravel-heading-char-color: #dddddd;
+
+    --bg-color: var(--ravel-bg-color);
+    --text-color: var(--ravel-text-color);
+    --md-char-color: var(--ravel-text-pale-color);
+    --meta-content-color: var(--ravel-text-pale-color);
+
+    --primary-color: var(--text-color);
+    --primary-btn-border-color: var(--text-color);
+    --primary-btn-text-color: var(--text-color);
+
+    --active-file-bg-color: var(--ravel-hover-bg-color);
+    --active-file-text-color: var(--text-color);
+    --active-file-border-color: var(--ravel-hover-bg-color);
+
+    --side-bar-bg-color: var(--bg-color);
+    --item-hover-bg-color: var(--ravel-hover-bg-color);
+    --item-hover-text-color: var(--text-color);
+
+    --select-text-bg-color: var(--ravel-accent-pale-color);
+    --rawblock-edit-panel-bd: var(--ravel-hover-bg-color);
+    --blur-text-color: var(--ravel-blur-text-color);
+    --heading-char-color: var(--ravel-heading-char-color);
+
+    --window-border: 1px solid var(--ravel-hover-bg-color);
+    --monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      "Liberation Mono", "Courier New", monospace;
+  }
+
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    background-color: var(--bg-color) !important;
+    font-family: "Inter", "Avenir Next", "Segoe UI", "Helvetica Neue", Arial,
+      sans-serif;
+    letter-spacing: 0.01em;
+    line-height: 1.75;
+  }
+
+  titlebar {
+    background-color: var(--bg-color);
+  }
+
+  #typora-sidebar,
+  content,
+  titlebar {
+    transition-duration: 0s;
+  }
+
+  /* ======= scrollbar ====== */
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    transition: 1s;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--ravel-scrollbar-thumb-color);
+    background-clip: padding-box;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    transition: 1s;
+  }
+
+  ::-webkit-scrollbar-thumb:vertical:hover,
+  ::-webkit-scrollbar-thumb:horizontal:hover {
+    background-color: var(--ravel-scrollbar-thumb-hover-color);
+    transition: 0.3s;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: none;
+  }
+
+  /* ======= sidebar ====== */
+
+  #typora-sidebar {
+    border-color: var(--ravel-hover-bg-color);
+  }
+
+  .sidebar-content {
+    background: var(--side-bar-bg-color);
+  }
+
+  .outline-content::-webkit-scrollbar,
+  .sidebar-content::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  #typora-sidebar:hover #file-library-tree {
+    padding-bottom: 100px !important;
+  }
+
+  .file-library-node:not(.file-node-root):focus > .file-node-content {
+    outline: none;
+  }
+
+  .file-node-background {
+    height: 30px;
+  }
+  .file-node-background:has(+ .file-node-content:hover) {
+    background-color: var(--active-file-bg-color);
+  }
+
+  .sidebar-tabs {
+    border-bottom: none;
+  }
+
+  .footer-btn {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .dropdown-menu > li > a {
+    padding: 6px 20px;
+  }
+  #sidebar-new-file-btn {
+    padding-top: 4.5px;
+    padding-bottom: 4.5px;
+  }
+  .file-node-icon {
+    margin-right: 3px;
+  }
+  .file-node-open-state {
+    margin-right: 3px;
+    min-width: 10px;
+  }
+  .file-node-open-state:has(+.fa-file-text-o) {
+    display: none;
+  }
+  .file-node-icon.fa-folder {
+    width: 0;
+    margin-right: 0 !important;
+  }
+  .file-node-icon.fa-folder::before {
+    content: "\f114";
+    display: none;
+  }
+  .file-node-icon.fa-file-text-o {
+    font-size: 0.8em;
+    opacity: 0.5;
+  }
+  .file-node-icon.fa-file-text-o::before {
+    content: "\f016";
+  }
+  .file-node-expanded > .file-node-content .fa-caret-down {
+    margin-top: 1px;
+    margin-left: 1px;
+    opacity: 0.5;
+  }
+  .file-node-collapsed .fa-caret-right {
+    opacity: 0.5;
+    margin-left: 3px;
+  }
+  .file-node-collapsed .fa-caret-right::before {
+    content: "\f125";
+    font-family: Ionicons;
+    font-size: 8px;
+    display: inline-block;
+    transform: translateY(-2px);
+  }
+  .file-node-expanded .fa-caret-down::before {
+    content: "\f123";
+    font-family: Ionicons;
+    font-size: 8px;
+    display: inline-block;
+    transform: translateY(-2px);
+  }
+  .file-tree-node {
+    padding-left: 18px;
+  }
+  .file-node-root {
+    padding-left: 6px;
+  }
+  .file-node-root > .file-node-children > .file-tree-node {
+    padding-left: 5px;
+  }
+  .file-node-title {
+    padding-left: 4px;
+  }
+  .file-list-item.active,
+  .file-list-item:hover {
+    background: var(--ravel-hover-bg-color);
+    background: var(--active-file-bg-color);
+    color: var(--active-file-text-color);
+  }
+  .outline-content {
+    padding-inline: 14px;
+  }
+  .outline-label {
+    padding-left: 4px;
+  }
+  .outline-label:hover {
+    text-decoration: none;
+  }
+  .outline-expander {
+    opacity: 0.5;
+  }
+  .outline-expander:hover:before {
+    content: "\f125";
+  }
+  .outline-item {
+    padding-block: 6px;
+  }
+  #typora-sidebar-resizer.dragging .typora-sidebar-resizer-bar {
+    margin-left: -6px;
+  }
+
+  /* ======= search ======= */
+
+  #md-searchpanel input {
+    border-radius: 2.5px;
+    border-color: var(--ravel-input-border-color);
+  }
+  #md-searchpanel input:focus {
+    border-radius: 2.5px;
+    border-color: var(--ravel-input-border-focus-color);
+  }
+  #md-searchpanel .btn:not(.close-btn):hover {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    background-color: var(--ravel-hover-bg-color);
+    border-radius: 2.5px;
+  }
+  .form-control {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+  .form-control:focus {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    border-color: var(--text-color);
+  }
+  #md-searchpanel {
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0 0.3em;
+  }
+  .mac-seamless-mode #md-searchpanel {
+    max-height: 66px;
+  }
+  .mac-seamless-mode #md-searchpanel.searchpanel-replace-mode {
+    max-height: 100px;
+  }
+
+  /* ======= typography ====== */
+
+  content {
+    overflow-y: scroll;
+  }
+
+  #write {
+    background-color: var(--bg-color) !important;
+    max-width: 820px;
+    margin: 28px auto 180px;
+    padding: 28px 28px 180px 32px;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.04);
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 1.65rem;
+    margin-bottom: 0.75rem;
+  }
+  h1 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.35rem;
+    font-size: 2.35rem;
+    text-align: center;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #2f2f36;
+    border-bottom: 2px solid var(--ravel-hr-color);
+    padding-bottom: 0.35rem;
+  }
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2c2c32;
+    margin-bottom: 0.35rem;
+  }
+  h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #56555c;
+    margin-bottom: 0.15rem;
+  }
+  h5 {
+    font-size: 0.95rem;
+  }
+  h6 {
+    font-size: 0.9rem;
+  }
+  h1.md-focus:before,
+  h2.md-focus:before,
+  h3.md-focus:before,
+  h4.md-focus:before,
+  h5.md-focus:before,
+  h6.md-focus:before {
+    color: var(--heading-char-color);
+    position: absolute;
+    font-size: 0.75em;
+    left: -0.5em;
+    top: 0.45em;
+    transform: translateX(-100%);
+    font-weight: 400;
+    font-family: var(--monospace);
+    line-height: 1;
+    border: none;
+    float: none;
+  }
+  h1.md-focus:before {
+    content: "#";
+  }
+  h2.md-focus:before {
+    content: "##";
+  }
+  h3.md-focus:before {
+    content: "###";
+  }
+  h4.md-focus:before {
+    content: "####";
+  }
+  h5.md-focus:before {
+    content: "#####";
+  }
+  h6.md-focus:before {
+    content: "######";
+  }
+
+  p {
+    margin-block: 0.85rem;
+    color: #3b3a40;
+  }
+
+  /* Document-friendly section lead under the name */
+  h1 + p {
+    margin-top: 0.1rem;
+    text-align: center;
+    color: var(--ravel-text-pale-color);
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+  }
+
+  blockquote {
+    margin-block: 1.1rem;
+    padding: 0.75rem 1rem;
+    border-left: 3px solid var(--ravel-accent-color);
+    background: #f9f9fb;
+    color: #3f3e45;
+  }
+  .md-alert {
+    border-width: 0.15em;
+  }
+
+  a {
+    text-underline-offset: 0.3em;
+    color: var(--ravel-accent-color);
+  }
+  a:hover {
+    opacity: 0.85;
+  }
+
+  code {
+    font-size: 0.9em;
+    background-color: var(--ravel-hover-bg-color);
+    border-radius: 2.5px;
+    padding: 0.1em 0.5em 0.15em;
+  }
+
+  em {
+    color: #5a5970;
+    font-style: italic;
+  }
+
+  strong {
+    font-weight: 700;
+    color: #202026;
+  }
+
+  hr {
+    border-top: 1.5px solid var(--ravel-hr-color);
+    margin-block: 1.5rem;
+  }
+
+  ol,
+  ul {
+    margin-block: 0.75rem;
+    padding-inline-start: 1.35rem;
+  }
+  ol ol,
+  ol ul,
+  ul ol,
+  ul ul {
+    margin-block: 0.25rem;
+  }
+  li p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+  }
+  li > p:not(:has(span)) {
+    line-height: 1.35;
+    height: auto;
+    transform: none;
+  }
+  li {
+    line-height: 1.35;
+    margin-block: 0.2rem;
+  }
+
+  #write ul li::marker,
+  #write ol li::marker {
+    color: var(--ravel-accent-color);
+  }
+  li pre {
+    line-height: 1.75;
+  }
+
+  .md-task-list-item > input {
+    margin-top: calc(1em - 8px);
+  }
+
+  figure {
+    margin-block: 2rem;
+  }
+
+  table thead {
+    font-weight: 500;
+  }
+  table tr,
+  table th,
+  table td {
+    border: 1px solid var(--ravel-table-border-color);
+  }
+  table th,
+  table td {
+    padding: 4px 12px;
+  }
+  .md-table-more {
+    display: initial !important;
+  }
+  .md-table-more .md-table-more-label {
+    display: none !important;
+  }
+  .ty-table-edit .btn-group-xs > .btn,
+  .ty-table-edit .md-table-more {
+    color: var(--ravel-table-btn-color);
+    background-color: transparent !important;
+    border: none;
+    box-shadow: none;
+  }
+  .ty-table-edit .btn-group-xs > .btn.active,
+  .ty-table-edit .btn-group-xs > .btn:hover,
+  .ty-table-edit .md-table-more:hover {
+    color: var(--ravel-table-btn-hover-color);
+  }
+  button.md-table-more {
+    padding-inline: 4px;
+  }
+  button.md-table-more .ty-dots-v {
+    margin-inline: 4px;
+  }
+  button.md-table-more .ty-dots-v:before {
+    font-size: 0.9em;
+  }
+
+  mark {
+    background-color: var(--ravel-accent-color);
+    color: var(--bg-color);
+  }
+  .on-search-panel-open mark {
+    background-color: var(--ravel-highlight-color);
+  }
+
+  button {
+    background-color: var(--ravel-accent-color);
+    color: var(--bg-color);
+    font-size: 0.9em;
+    padding: 0.1rem 1rem;
+    border-radius: 5rem;
+    outline: none;
+    border: none;
+  }
+
+  sup.md-footnote {
+    background-color: var(--ravel-hover-bg-color);
+  }
+
+  .md-fences {
+    margin-block: 1.35rem;
+    background-color: var(--ravel-hover-bg-color);
+    border-radius: 2.5px;
+    tab-size: 4;
+  }
+  .CodeMirror {
+    border-radius: 2.5px;
+  }
+  .CodeMirror pre {
+    padding: 0;
+  }
+  #write li .CodeMirror-line {
+    line-height: 1.5625rem;
+  }
+  .md-fences:not(:has(.CodeMirror-scroll)),
+  .CodeMirror-scroll {
+    padding: 0.75rem 1rem;
+  }
+  pre.md-meta-block {
+    background: var(--ravel-hover-bg-color);
+    border-radius: 2.5px;
+    padding: 0.75rem 1rem;
+  }
+  .CodeMirror-linenumber {
+    color: var(--ravel-hover-accent-color);
+  }
+  #write .CodeMirror-linenumber {
+    transform: translateX(-100%);
+  }
+  .CodeMirror-gutter-wrapper {
+    left: -22px !important;
+  }
+  .CodeMirror-gutters {
+    left: 0 !important;
+    top: 0.75em;
+    border-color: var(--ravel-gutter-border-color);
+  }
+  .CodeMirror-line > span {
+    padding-right: 1rem !important;
+  }
+  .code-tooltip {
+    box-shadow: none;
+    border: 1px solid var(--ravel-code-tooltip-border-color);
+    padding: 0 !important;
+    background-color: var(--bg-color);
+  }
+  .code-tooltip .ty-input {
+    border: none;
+  }
+  .cm-s-inner .cm-def,
+  .cm-s-inner .cm-attribute {
+    color: #bf5f5f;
+  }
+  .cm-s-inner .cm-keyword,
+  .cm-s-inner .cm-tag {
+    color: var(--ravel-accent-color);
+  }
+  .cm-s-inner .cm-comment {
+    color: #8e8d91;
+  }
+  .cm-s-inner .cm-string {
+    color: #579476;
+  }
+  .cm-s-inner .cm-number,
+  .cm-s-inner .cm-atom {
+    color: #3a9a87;
+  }
+  .cm-s-inner .cm-property {
+    color: #9c5db8;
+  }
+  .cm-s-inner .cm-operator,
+  .cm-s-inner .cm-builtin,
+  .cm-s-inner .cm-variable,
+  .cm-s-inner .cm-variable-2,
+  .cm-s-inner .cm-variable-3 {
+    color: inherit;
+  }
+  .cm-s-typora-default .cm-header,
+  .cm-s-typora-default .cm-property {
+    color: #39997b;
+  }
+  .cm-s-typora-default .cm-link {
+    color: #668ce6;
+  }
+  .cm-s-typora-default .cm-atom,
+  .cm-s-typora-default .cm-number {
+    color: #8e8d91;
+  }
+
+  .CodeMirror div.CodeMirror-cursor {
+    border-color: currentColor;
+  }
+  .cm-s-typora-default .CodeMirror-activeline-background {
+    background: var(--ravel-hover-bg-color);
+  }
+
+  #typora-source .CodeMirror.cm-s-typora-default .CodeMirror-cursor {
+    border-color: #39997b;
+  }
+
+  .md-image > .md-meta {
+    color: var(--ravel-img-meta-color);
+  }
+  .md-hover-tip .code-tooltip-content {
+    padding: 6px 10px;
+  }
+
+  .on-focus-mode #write svg {
+    opacity: unset;
+  }
+
+  /* ======= others ====== */
+
+  .context-menu {
+    padding-block: 0;
+  }
+  .popover {
+    border-radius: 4px;
+    border: none;
+    box-shadow:
+      rgba(15, 15, 15, 0.03) 0 0 0 1px,
+      rgba(15, 15, 15, 0.04) 0 3px 6px,
+      rgba(15, 15, 15, 0.05) 0 9px 24px;
+  }
+  table.md-grid-board {
+    margin: 8px 10px;
+  }
+  .md-table-resize-popover {
+    min-width: unset;
+  }
+  .md-resize-table-th .popover {
+    width: unset;
+  }
+  .popover-title {
+    padding: 8px;
+  }
+  .popover > .arrow {
+    display: none;
+  }
+  .popover.bottom {
+    margin-top: 6px;
+  }
+  .code-tooltip-content {
+    padding: 0;
+  }
+  #typora-quick-open {
+    border-radius: 2.5px;
+    padding: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  }
+  #typora-quick-open-input input {
+    box-shadow: none;
+    border: 1px solid var(--ravel-input-border-color);
+    max-height: unset;
+    padding: 2px 8px;
+  }
+  .typora-quick-open-item {
+    border-radius: 2.5px;
+  }
+  .typora-quick-open-item:hover {
+    cursor: pointer;
+    background-color: var(--active-file-bg-color);
+    border-color: var(--active-file-text-color);
+    color: var(--active-file-text-color);
+  }
+  #ty-suppress-mode-warning-input {
+    margin-top: 0 !important;
+  }
+  #ty-suppress-mode-warning-close-btn {
+    color: var(--ravel-text-color);
+  }
+  #ty-suppress-mode-warning-close-btn:active {
+    box-shadow: none;
+    border-color: transparent;
+  }
+
+  /* ======= document overrides (quiet, text-first) ====== */
+
+  /* 1. Container: remove card chrome */
+  #write {
+    max-width: 720px;
+    margin: 36px auto 120px;
+    padding: 0 8px 96px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  /* 2. Font stacks */
+  :root {
+    --document-serif: "Georgia", "Palatino Linotype", "Book Antiqua", Palatino,
+      "Times New Roman", serif;
+    --document-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      "Helvetica Neue", Arial, sans-serif;
+
+    --ravel-text-color: #2c2c2c;
+    --ravel-text-pale-color: #777777;
+    --ravel-accent-color: #444466;
+    --ravel-accent-pale-color: #ddddf0;
+    --ravel-hr-color: #dddddd;
+  }
+
+  body {
+    font-family: var(--document-serif);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--document-sans);
+  }
+
+  /* 3. Name & subtitle */
+  h1 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+    font-size: 1.75rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.04em;
+    text-transform: none;
+  }
+
+  h1 + p {
+    margin-top: 0.1rem;
+    margin-bottom: 0.1rem;
+    text-align: center;
+    color: #555555;
+    font-family: var(--document-sans);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* 4. Section headings */
+  h2 {
+    margin-top: 1.4rem;
+    margin-bottom: 0.4rem;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: none;
+    font-variant: small-caps;
+    color: #222222;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  /* 5. Colors & links */
+  #write ul li::marker,
+  #write ol li::marker {
+    color: currentColor;
+  }
+
+  a {
+    color: #444466;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
+    opacity: 1;
+  }
+
+  /* 6. Lists & hierarchy */
+  ul,
+  ol {
+    margin-block: 0.4rem;
+    padding-inline-start: 1.2rem;
+  }
+
+  li {
+    margin-block: 0.15rem;
+    line-height: 1.35;
+  }
+
+  strong {
+    font-weight: 600;
+    color: #222222;
+  }
+
+  /* ======= document option B overrides (sans body, serif accents) ====== */
+  :root {
+    --document-serif: "Georgia", "Palatino Linotype", "Book Antiqua", Palatino,
+      "Times New Roman", serif;
+    --document-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      "Helvetica Neue", Arial, sans-serif;
+  }
+
+  /* Very readable body */
+  body {
+    font-family: var(--document-sans);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    color: #222222;
+  }
+
+  /* Serif only for the name; rest stays sans for readability */
+  h1 {
+    font-family: var(--document-serif);
+    letter-spacing: 0.02em;
+    margin-top: 0.4rem;
+    margin-bottom: 0.2rem;
+  }
+  h2,
+  h3,
+  h4 {
+    font-family: var(--document-sans);
+  }
+
+  h2 {
+    margin-top: 1.3rem;
+    margin-bottom: 0.25rem;
+    font-family: var(--document-sans);
+    font-variant: small-caps;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    border-bottom: none;
+    color: #333333;
+    text-transform: none;
+  }
+
+  /* Text width: 60–70 chars */
+  #write {
+    max-width: 660px;
+  }
+
+  /* Lists and paragraphs: easier to scan */
+  p {
+    margin-block: 0.45rem;
+  }
+
+  ul,
+  ol {
+    margin-block: 0.35rem;
+    padding-inline-start: 1.2rem;
+  }
+
+  li {
+    margin-block: 0.15rem;
+    line-height: 1.45;
+  }
+
+
+  @keyframes blink-bg {
+    0%,
+    49% {
+      background-color: var(--ravel-accent-pale-color);
+    }
+  }
+
+  @media print, (overflow-block: paged), (overflow-block: optional-paged) {
+
+    /* Make thematic breaks (hr) force a page break */
+    hr {
+      page-break-after: always;   /* CSS2 */
+      break-after: page;          /* CSS3 / newer */
+      height: 0.1mm;
+      visibility: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* EXCEPTION 1: do NOT break after the very first hr (prevents blank page if doc starts with ---) */
+    hr:first-of-type {
+      page-break-after: auto;
+      break-after: auto;
+      visibility: hidden; /* keep it visually hidden if you like */
+    }
+
+    /* Make H1 start a new page */
+    h1 {
+      page-break-before: always;
+      break-before: page;
+    }
+
+    /* EXCEPTION 2: do NOT break before the very first H1 (prevents blank page if doc starts with H1) */
+    h1:first-of-type {
+      page-break-before: avoid;
+      break-before: auto;
+    }
+
+    /* Reduce awkward splits inside headings */
+    h2, h3, h4, h5, h6 {
+      page-break-after: avoid;
+      page-break-before: avoid;
+      break-after: avoid;
+      break-before: avoid;
+    }
+
+    /* Optional utility */
+    .page-break {
+      display: block;
+      page-break-after: always;
+      break-after: page;
+    }
+  }
+  </style>
+</head>
+<body>
+<h1 id="jordan-rivers">Jordan Rivers</h1>
+<p>Product Design &amp; Research · jordan.rivers@email.com ·
+555-123-4567 · San Francisco, CA · linkedin.com/in/jordanrivers</p>
+<h2 id="profile">Profile</h2>
+<p>Human-centered product designer focused on simplifying complex
+workflows and delivering measurable business outcomes. 8+ years leading
+cross-functional discovery, prototyping, and launch efforts across SaaS
+and mobile.</p>
+<h2 id="experience">Experience</h2>
+<h3 id="lead-product-designer-atlas-systems">Lead Product Designer ·
+Atlas Systems</h3>
+<p>San Francisco, CA · 2020–Present - Drove redesign of core analytics
+suite, cutting time-to-insight by 38% and improving activation +14% MoM.
+- Partnered with PM/Eng to ship experimentation framework; reduced
+build-measure-learn cycle from 6 weeks to 2. - Built design ops rituals
+(critique, tokens, Figma libraries) that halved handoff defects
+quarter-over-quarter.</p>
+<h3 id="product-designer-northwind-labs">Product Designer · Northwind
+Labs</h3>
+<p>Remote · 2017–2020 - Led mobile-first overhaul for onboarding,
+lifting conversion from 22% to 41% through progressive disclosure. - Ran
+mixed-method research (diary studies, rapid usability tests) to
+prioritize roadmap and cut churn by 9%. - Created accessibility patterns
+(color, motion, copy) that brought AA compliance to top 5 surfaces.</p>
+<h2 id="education">Education</h2>
+<h3 id="b.s.-human-computer-interaction-university-of-washington">B.S.
+Human-Computer Interaction · University of Washington</h3>
+<p>2013–2017 · Dean’s List; HCI Lab Research Assistant</p>
+<h2 id="skills">Skills</h2>
+<ul>
+<li>Design: UX flows, interaction design, visual systems, prototyping
+(Figma), design tokens</li>
+<li>Research: JTBD interviews, moderated usability, surveys, analytics
+triangulation, A/B test setup</li>
+<li>Delivery: Agile rituals, PRD collaboration, design QA,
+documentation, stakeholder facilitation</li>
+</ul>
+<h2 id="projects">Projects</h2>
+<h3 id="workflow-builder-side-project">Workflow Builder (Side
+Project)</h3>
+<ul>
+<li>Designed a drag-and-drop automation builder for SMB teams; shipped
+MVP in 6 weeks using low-code stack.</li>
+<li>Integrated AI assist prompts that cut rule creation time by 55% in
+pilot testing.</li>
+</ul>
+<h3 id="component-library-refresh">Component Library Refresh</h3>
+<ul>
+<li>Audited and rebuilt component set with tokens; reduced unique styles
+by 63% and themed for dark/light.</li>
+</ul>
+<h2 id="awards-extras">Awards &amp; Extras</h2>
+<ul>
+<li>UX Awards 2023: Honorable Mention — Atlas analytics redesign</li>
+<li>Speaker: “Designing for Decision Clarity” at ProductCraft SF
+2022</li>
+<li>Tools: Figma, FigJam, Principle, Notion, Amplitude, Hotjar</li>
+</ul>
+</body>
+</html>
