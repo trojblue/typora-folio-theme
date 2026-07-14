@@ -2,13 +2,19 @@
 set -euo pipefail
 
 if [[ $# -lt 3 ]]; then
-  echo "Usage: $0 <markdown.md> <theme.css> <output-dir>"
+  echo "Usage: $0 <markdown.md> <theme.css> <output-dir> [default|compact]"
   exit 1
 fi
 
 MARKDOWN="$1"
 CSS="$2"
 OUTDIR="$3"
+MARGIN_PROFILE="${4:-default}"
+
+if [[ "$MARGIN_PROFILE" != "default" && "$MARGIN_PROFILE" != "compact" ]]; then
+  echo "Unknown margin profile: $MARGIN_PROFILE (expected default or compact)" >&2
+  exit 1
+fi
 
 if [[ ! -f "$MARKDOWN" ]]; then
   echo "Markdown file not found: $MARKDOWN" >&2
@@ -48,7 +54,7 @@ const { chromium } = require('playwright-core');
 const path = require('path');
 const fs = require('fs');
 
-const [htmlPath, pdfPath] = process.argv.slice(2);
+const [htmlPath, pdfPath, marginProfile = 'default'] = process.argv.slice(2);
 const candidatePaths = [
   process.env.CHROMIUM_PATH,
   process.env.CHROME_PATH,
@@ -103,13 +109,21 @@ if (!htmlPath || !pdfPath) {
   const page = await browser.newPage();
   const fileUrl = 'file://' + htmlPath;
   await page.goto(fileUrl);
+  if (marginProfile === 'compact') {
+    await page.addStyleTag({
+      content: '@page { size: A4; margin: 8mm 26mm 10mm; }',
+    });
+  }
+  const margins = marginProfile === 'compact'
+    ? { top: '0', bottom: '0', left: '0', right: '0' }
+    : { top: '0.5in', bottom: '0.7in', left: '0.6in', right: '0.6in' };
   await page.pdf({
     path: pdfPath,
     printBackground: true,
     displayHeaderFooter: true,
     headerTemplate: '<div></div>',
     footerTemplate: '<div style="font-size:9px; width:100%; text-align:center; color:#444; padding:6px 0;"><span class="pageNumber"></span>/<span class="totalPages"></span></div>',
-    margin: { top: '0.5in', bottom: '0.7in', left: '0.6in', right: '0.6in' },
+    margin: margins,
     preferCSSPageSize: true,
   });
 
@@ -122,6 +136,6 @@ npm init -y >/dev/null 2>&1
 npm install playwright-core >/dev/null 2>&1
 
 echo "Generating PDF -> $PDF_OUT"
-node "$TMPDIR/export.js" "$HTML_ABS" "$PDF_ABS"
+node "$TMPDIR/export.js" "$HTML_ABS" "$PDF_ABS" "$MARGIN_PROFILE"
 
 echo "Done."
